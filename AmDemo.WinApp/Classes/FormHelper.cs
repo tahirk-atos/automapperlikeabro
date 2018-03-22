@@ -24,9 +24,7 @@ namespace AmDemo.WinApp.Classes
 		{
 			var customer = _customerSerice.GetCustomers().FirstOrDefault();
 
-			var customerViewModel = _mapper.Map<CustomerViewModel>(customer);
-
-			return customerViewModel;
+			return  _mapper.Map<CustomerViewModel>(customer);
 		}
 	}
 }
