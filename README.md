@@ -70,19 +70,19 @@ The project also makes use of the AmDemo.Service project which provides a servic
 The main Windows Forms UI class (Form1.cs) has an event called btnGo_Click which is triggered when the UI button is pressed.
 This event method first creates an IContainer object that contains the registered modules (telling Autofac what dependancies to register at runtime), these modules are registered inside the Classes\AmDemoModule.cs class using the
 ContainerBuilder assembly that contains Register() methods to register various objects (types, services etc):
-
+```csharp
             builder.RegisterType<CustomerService>().As<ICustomerService>();
             builder.RegisterType<CustomerRepository>().As<ICustomerRepository>();
             builder.RegisterType<FormHelper>().As<IFormHelper>();
             builder.RegisterType<AmDataContext>();
             builder.RegisterType<Form1>().AsSelf();
-
+```
 For further details on Autofac please review the documentation found here [readthedocs.io: Autofac](http://autofaccn.readthedocs.io).
 
 The following line calls a custom method that registers the AutoMapper profile instances:
-
+```csharp
             RegisterAutomapper(builder);
-
+```
 This method does the following:
 
 * Gets a collection of the runtime assemblies
@@ -97,27 +97,27 @@ class itself is registered as with the `InstancePerLifetimeScope()` applied to e
 After registering the dependencies a new nested scope is created with the *using* code block.  This is a simple way of working with Autofac DI inside a WinForms or Console Application where you need to manually create the DI component
 instances. Inside the using block the FormHelper class is retrieving from the scope (provided the class type was registered in the Module class earlier the instance becomes available in the context of the scope) and then the `GetCustomer()` 
 method is called from the instance of the FormHelper.cs class:
-
+```csharp
             var _formHelper = scope.Resolve<IFormHelper>();
             var customer = _formHelper.GetCustomer();
-
+```
 The FormHelper.cs class provides utility services to the Form1.cs class and is simply a pattern used to seperate code out (allowing for unit testing etc). The FormHelper.cs class uses constructor injection to satisfy some dependencies so access
 is made available to the CustomerService & Mapper classes.
 
 The `GetCustomer()` method calls the customer service that provides a single cusotmer record obtained from the database (via the data layer and associated repository class); Finally an instance of CustomerViewModel is inflated dynamically by 
 executing the mapping that has been configured, from the source to the destination (see the `CustomerProfile.cs` class) and this object is returned back to the calling point (Form1.cs):
-
+```csharp
             var customer = _customerSerice.GetCustomers().FirstOrDefault();
 
             return  _mapper.Map<CustomerViewModel>(customer);
-
+```
 The CustomerViewModel object is checked to contain values and these values are then assigned to the appropriate UI elements:
-
+```csharp
             tbFirstname.Text = customer.Firstname;
             tbLastname.Text = customer.Lastname;
             tbAge.Text = customer.Age.ToString();
             tbGender.Text = customer.Gender.ToString();
-
+```
 <ins>**Data layer:**</ins>
 
 The data layer is found in the AmDemo.Data project and uses out of the box Entity Framework 6.2.0 package with Code First models and a repository pattern.
