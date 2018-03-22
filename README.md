@@ -126,3 +126,9 @@ The data layer is found in the AmDemo.Data project and uses out of the box Entit
 
 The repository class are derived from a generic base class (`BaseRepository.cs`) and use a constructor to pass an instance of the data context to the base 
 class which removes the need to repeatedly instantiate the data context; The base class also takes care of disposing of the data context object.
+
+#### References
+
+* [AutoMapper documentation](http://docs.automapper.org)
+* [Autofac documentation](http://autofaccn.readthedocs.io)
+* [Implementing the Repository and Unit of Work Patterns in an ASP.NET MVC Application](https://docs.microsoft.com/en-us/aspnet/mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application)
