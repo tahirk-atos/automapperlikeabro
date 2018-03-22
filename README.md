@@ -1,16 +1,16 @@
-# Automapper like a bro!
+# AutoMapper like a bro!
 
-This is a collection of projects demonstrating the common ways to use the latest version of Automapper including best practice patterns and examples.
+This is a collection of projects demonstrating the common ways to use the latest version of AutoMapper including best practice patterns and examples.
 
 #### The solution is split into several projects:
 * SQL Scripts - SQL Scripts to be executed for creating demo data
-* AmDemo.WinApp - WinForms applicaiton demo (Automapper, Autofac DI)
-* AmDemo.ConsoleApp - Console Application demo (Automapper, Autofac DI)
+* AmDemo.WinApp - WinForms applicaiton demo (AutoMapper, Autofac DI)
+* AmDemo.ConsoleApp - Console Application demo (AutoMapper, Autofac DI)
 * AmDemo.Mvc  - Model View Controller web application demo (Autonmapper, Autofac DI)
 * AmDemo.Core - Contains common functions used across all projects
 * AmDemo.Data - Data layer using Repository Pattern & EF Code First
 * AmDemo.Service - Services common to all the demo applications
-* AmDemo.Test - Contains the unit and integration tests (Automapper, Autofac DI, nunit)
+* AmDemo.Test - Contains the unit and integration tests (AutoMapper, Autofac DI, nunit)
 
 #### What you need to get started
 
