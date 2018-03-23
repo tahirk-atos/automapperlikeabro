@@ -6,6 +6,7 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using AmDemo.Mvc.Classes;
 
 namespace AmDemo.Mvc
 {
@@ -18,6 +19,7 @@ namespace AmDemo.Mvc
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            Module.RegisterDependencies();
         }
     }
 }

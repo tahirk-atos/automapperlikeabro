@@ -1,5 +1,4 @@
 ﻿using AmDemo.WinApp.Classes;
-using AmDemo.WinApp.ViewModels;
 using Autofac;
 using System;
 using System.Collections.Generic;

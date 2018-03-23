@@ -1,4 +1,7 @@
-﻿using System;
+﻿using AmDemo.Mvc.Models;
+using AmDemo.Service.Services;
+using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,25 +9,29 @@ using System.Web.Mvc;
 
 namespace AmDemo.Mvc.Controllers
 {
-	public class HomeController : Controller
-	{
-		public ActionResult Index()
-		{
-			return View();
-		}
+    public class HomeController : Controller
+    {
+        private ICustomerService _customerService;
+        private IMapper _mapper;
 
-		public ActionResult About()
-		{
-			ViewBag.Message = "Your application description page.";
+        public HomeController(ICustomerService customerService, IMapper mapper)
+        {
+            _customerService = customerService;
+            _mapper = mapper;
+        }
 
-			return View();
-		}
+        public ActionResult Index()
+        {
+            var customers = _customerService.GetCustomers();
 
-		public ActionResult Contact()
-		{
-			ViewBag.Message = "Your contact page.";
+            var customerViewModel = new List<CustomerViewModel>();
 
-			return View();
-		}
-	}
+            foreach(var c in customers)
+            {
+                customerViewModel.Add(_mapper.Map<CustomerViewModel>(c));
+            }
+
+            return View(customerViewModel);
+        }
+    }
 }
