@@ -46,8 +46,10 @@ The test project contains several different unit & integration tests which demon
 
 #### Demo projects
 
-Currently the following demo applications are active (more will be added to this list as they are completed & updated):
+The following demo projects are available:
 
+* AmDemo.ConsoleApp
+* AmDemo.Mvc
 * AmDemo.WinApp
 
 ##### AmDemo.WinApp:
